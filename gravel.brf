@@ -36,9 +36,9 @@ assign uphillcutoff   switch and not consider_elevation avoid_steep_inclines    
 assign has_decent_surface surface=asphalt|concrete|paved|paving_stones|fine_gravel|compacted
 assign bad_when_steep ( and highway=track|path not ( or tracktype=grade1|grade2 has_decent_surface ) )
 
-assign downhillcost   switch bad_when_steep ( max  80 downhillcost   ) downhillcost
+assign downhillcost   switch bad_when_steep ( max 160 downhillcost   ) downhillcost
 assign downhillcutoff switch bad_when_steep ( min 1.5 downhillcutoff ) downhillcutoff
-assign uphillcost     switch bad_when_steep ( max 160 uphillcost     ) uphillcost
+assign uphillcost     switch bad_when_steep ( max  80 uphillcost     ) uphillcost
 assign uphillcutoff   switch bad_when_steep ( min 1.5 uphillcutoff   ) uphillcutoff
 
 assign any_cycleway or cycleway=track|lane|shared_lane|shared
