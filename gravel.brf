@@ -1,4 +1,4 @@
-# "quaelnix-gravel.brf" -- Version 01.01.2024
+# "quaelnix-gravel.brf" -- Version 14.04.2024
 # This customizeable profile, developed by quaelnix, is designed for gravel cyclists who want to avoid traffic as much
 # as possible, but still get to their destination efficiently - taking into account the capabilities of a gravel bike.
 
@@ -15,7 +15,7 @@ assign validForBikes true
 # +++ Kinematic model parameters (travel time computation)
 assign totalMass  = 90    # %totalMass%  | Mass (kg) of the bike + biker | number
 assign maxSpeed   = 35    # %maxSpeed%   | Absolute maximum speed (km/h) | number
-assign S_C_x      = 0.370 # %S_C_x%      | Drag coefficient times reference area (m^2) times half air density (kg/m^3)
+assign S_C_x      = 0.300 # %S_C_x%      | Drag coefficient times reference area (m^2) times half air density (kg/m^3)
 assign C_r        = 0.005 # %C_r%        | Rolling resistance coefficient (dimensionless)
 assign bikerPower = 150   # %bikerPower% | Average power (W) provided by the biker | number
 
