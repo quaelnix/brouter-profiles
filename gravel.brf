@@ -1,4 +1,4 @@
-# "quaelnix-gravel.brf" -- Version 14.04.2024
+# "quaelnix-gravel.brf" -- Version 27.04.2024
 # This customizeable profile, developed by quaelnix, is designed for gravel cyclists who want to avoid traffic as much
 # as possible, but still get to their destination efficiently - taking into account the capabilities of a gravel bike.
 
@@ -53,8 +53,8 @@ assign is_main_road highway=primary|primary_link|secondary|secondary_link|tertia
 assign initialclassifier switch route=ferry 4 switch is_main_road 3 switch footway=crossing 2 1
 assign initialcost switch route=ferry 10000 switch is_main_road 320 switch assume_wet_conditions 100 20
 
-assign nobikeaccess not switch bicycle= ( not access=no|private ) ( not bicycle=no|private|dismount|use_sidepath )
-assign nofootaccess not switch foot= ( not access=no|private ) ( not foot=no|private|use_sidepath )
+assign nobikeaccess switch bicycle= ( switch vehicle= access=no|private vehicle=no|private ) ( bicycle=no|private )
+assign nofootaccess switch foot= access=no|private foot=no|private
 
 assign badoneway
     switch not reversedirection=yes     oneway=-1
@@ -199,6 +199,7 @@ assign costfactor
     multiply switch consider_traffic_estimate trafficpenalty 1
     multiply onewaypenalty multiply smoothnesspenalty
     multiply hikingpenalty multiply mtbpenalty
+    multiply switch bicycle=use_sidepath 1.6 1
     multiply tracktypepenalty
     multiply maxspeedpenalty
     switch or highway=motorway|motorway_link motorroad=yes      10000
@@ -207,7 +208,6 @@ assign costfactor
     switch    highway=trunk|trunk_link switch any_cycleroute    20 80
     switch    highway=bridleway|raceway switch not bicycle=yes  20 5
     switch    highway=pedestrian switch not bicycle=yes         8 3
-    switch or vehicle=no|private nobikeaccess                   6.0
     switch    highway=primary|primary_link                      4.8
     switch    highway=secondary|secondary_link                  4.2
     switch    highway=tertiary|tertiary_link                    3.6
