@@ -1,4 +1,4 @@
-# "quaelnix-gravel.brf" -- Version 27.04.2024
+# "quaelnix-gravel.brf" -- Version 28.04.2024
 # This customizeable profile, developed by quaelnix, is designed for gravel cyclists who want to avoid traffic as much
 # as possible, but still get to their destination efficiently - taking into account the capabilities of a gravel bike.
 
@@ -53,8 +53,8 @@ assign is_main_road highway=primary|primary_link|secondary|secondary_link|tertia
 assign initialclassifier switch route=ferry 4 switch is_main_road 3 switch footway=crossing 2 1
 assign initialcost switch route=ferry 10000 switch is_main_road 320 switch assume_wet_conditions 100 20
 
-assign nobikeaccess switch bicycle= ( switch vehicle= access=no|private vehicle=no|private ) ( bicycle=no|private )
-assign nofootaccess switch foot= access=no|private foot=no|private
+assign nobikeaccess switch bicycle= switch vehicle= access=no|private vehicle=no|private bicycle=no|private|dismount
+assign nofootaccess switch foot= ( and access=no|private ( not bicycle=dismount ) ) foot=no|private
 
 assign badoneway
     switch not reversedirection=yes     oneway=-1
@@ -271,8 +271,8 @@ assign classifiermask
 
 ---context:node
 
-assign nobikeaccess not switch bicycle= ( not access=no|private ) ( not bicycle=no|private|dismount )
-assign nofootaccess not switch foot= ( not access=no|private ) ( not foot=no|private )
+assign nobikeaccess switch bicycle= switch vehicle= access=no|private vehicle=no|private bicycle=no|private|dismount
+assign nofootaccess switch foot= ( and access=no|private ( not bicycle=dismount ) ) foot=no|private
 
 assign barrierpenalty
     switch barrier=                0
