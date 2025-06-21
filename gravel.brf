@@ -1,4 +1,4 @@
-# "quaelnix-gravel.brf" -- Version 05.05.2024
+# "quaelnix-gravel.brf" -- Version 21.06.2025
 # This customizeable profile, developed by quaelnix, is designed for gravel cyclists who want to avoid traffic as much
 # as possible, but still get to their destination efficiently - taking into account the capabilities of a gravel bike.
 
@@ -23,6 +23,7 @@ assign consider_traffic_estimate false # %consider_traffic_estimate% | Enable to
 assign assume_wet_conditions false # %assume_wet_conditions% | Enable to assume wet conditions | boolean
 assign prefer_unpaved_paths false # %prefer_unpaved_paths% | Enable to prefer unpaved paths | boolean
 assign avoid_steep_inclines false # %avoid_steep_inclines% | Enable to avoid steep inclines | boolean
+assign prefer_paved_paths false # %prefer_paved_paths% | Enable to prefer paved paths | boolean
 assign prefer_cycle_routes false # %prefer_cycle_routes% | Enable to prefer cycle routes | boolean
 assign consider_elevation false # %consider_elevation% | Enable to consider elevation | boolean
 
@@ -197,6 +198,7 @@ assign maxspeedpenalty
 assign costfactor
     multiply notcycleroutepenalty multiply notcyclewaypenalty
     multiply switch consider_traffic_estimate trafficpenalty 1
+    multiply switch and prefer_paved_paths not is_paved 12 1
     multiply onewaypenalty multiply smoothnesspenalty
     multiply hikingpenalty multiply mtbpenalty
     multiply switch bicycle=use_sidepath 1.6 1
