@@ -201,6 +201,7 @@ assign costfactor
     multiply hikingpenalty multiply mtbpenalty
     multiply switch bicycle=use_sidepath 1.6 1
     multiply switch nobikeaccess 6 1
+    multiply switch informal=yes 5 1
     multiply tracktypepenalty
     multiply maxspeedpenalty
     switch or highway=motorway|motorway_link motorroad=yes      10000
